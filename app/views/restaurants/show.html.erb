@@ -1,0 +1,30 @@
+<div class="card-trip">
+  <%= image_tag "#{@restaurant.category}.jpg", alt: "Restaurant image" %>
+  <div class="card-trip-infos">
+    <div>
+      <h3 class="card-restaurant-name"><%= @restaurant.name %></h3>
+      <p><%= @restaurant.address %></p>
+    </div>
+    <h2 class="card-trip-pricing">Phone: <%= @restaurant.phone_number %></h2>
+    <h2 class="card-trip-user">Category: <%= @restaurant.category.capitalize %></h2>
+  </div>
+</div>
+<div class="my-3">
+  <div class="row align-items-start">
+    <div class="col">
+      <h2 class="mb-3">Reviews:</h2>
+      <% @restaurant.reviews.each do |review| %>
+        <p>Rating: <%= "⭐" * review.rating %></p>
+        <p><%= review.content %></p>
+      <% end %>
+    </div>
+    <div class="col sticky-top">
+      <h2>Add your review:</h2>
+      <%= simple_form_for [@restaurant, @review] do |f| %>
+        <%= f.input :rating %>
+        <%= f.input :content %>
+        <div class="d-grid gap-2">
+          <%= f.submit 'Add', class: 'btn btn-success mt-3' %>
+        </div>
+      <% end %>
+    </div>

@@ -1,0 +1,16 @@
+<div class="text-center mb-3">
+  <h1>Our Restaurants</h1>
+</div>
+<div class="cards mb-2">
+  <% @restaurants.each do |restaurant| %>
+    <%= link_to restaurant_path(restaurant), class: "text-dark text-decoration-none" do %>
+      <div class="card-product">
+        <%= image_tag "#{restaurant.category}.jpg", alt: "Restaurant image" %>
+        <div class="card-product-infos">
+          <h2><%= restaurant.name %></h2>
+          <p><%= restaurant.address %></p>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
